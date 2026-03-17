@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title %}{{ page.title }} · The Persistence Problem{% else %}The Persistence Problem — Everything about AI Memory{% endif %}</title>
+  <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+  {% seo %}
+</head>
+<body>
+
+  <header class="hdr" id="hdr">
+    <div class="hdr-in">
+      <a class="logo" href="{{ '/' | relative_url }}">
+        <div class="logo-icon">
+          <svg viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="#E09820" stroke-width="1.5"/><circle cx="9" cy="9" r="3.5" fill="#E09820" fill-opacity=".3"/><circle cx="9" cy="9" r="1.5" fill="#E09820"/></svg>
+        </div>
+        <span class="logo-wordmark">How AI <span>Remembers</span></span>
+      </a>
+      <nav class="hdr-nav">
+        <a href="{{ '/' | relative_url }}" class="nav-a {% if page.url == '/' %}active{% endif %}">Series</a>
+        <a href="{{ '/about/' | relative_url }}" class="nav-a {% if page.url contains 'about' %}active{% endif %}">About</a>
+        <span class="nav-chip">Ongoing · 2026</span>
+      </nav>
+    </div>
+  </header>
+
+  <main>{{ content }}</main>
+
+  <footer class="footer">
+    <div class="footer-in">
+      <div class="footer-logo">
+        <div class="footer-logo-dot"></div>
+        How AI Remembers
+      </div>
+      <p class="footer-text">
+        An independent research series by <a href="{{ '/about/' | relative_url }}">Rex Mathew</a>, Kerala, India. 2026.
+      </p>
+    </div>
+  </footer>
+
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+</body>
+</html>
