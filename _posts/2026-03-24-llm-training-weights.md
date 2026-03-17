@@ -1,5 +1,7 @@
 ---
 layout: none
+title: "What happens inside an LLM when it learns something"
+slug: "llm-training-weights"
 permalink: /posts/llm-training-weights/
 ---
 <!DOCTYPE html>
