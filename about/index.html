@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — How AI Remembers</title>
+<meta name="description" content="About Rex Mathew and the How AI Remembers series — an independent study into AI memory architecture.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'DM Sans',system-ui,sans-serif;background:#fff;color:#1B1916;-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.6}
+a{color:inherit;text-decoration:none}
+
+:root{
+  --ink:#1B1916;--ink2:#38342C;--ink3:#635E56;--ink4:#9C9790;--ink5:#C8C3BB;--ink6:#E8E3DC;
+  --bg:#FFFFFF;--bg2:#FAFAF7;--bg3:#F4F1EB;--bg4:#EAE5DC;
+  --a:#E09820;--al:#FDF5DC;--am:#F5CB68;--ad:#9E6C0C;--adk:#5A3A06;
+  --t:#1A8A6A;--tl:#E2F5EE;--tm:#6EC8A8;--td:#0E5E48;
+  --serif:'Lora',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;
+  --bd:rgba(27,25,22,.08);--bdm:rgba(27,25,22,.14);
+  --sh1:0 1px 4px rgba(27,25,22,.06),0 1px 2px rgba(27,25,22,.03);
+  --sh2:0 4px 20px rgba(27,25,22,.08),0 2px 6px rgba(27,25,22,.04);
+}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes growR{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.au{animation:fadeUp .55s cubic-bezier(.22,1,.36,1) both}
+.a1{animation-delay:.07s}.a2{animation-delay:.14s}.a3{animation-delay:.21s}
+.sr{opacity:0;transform:translateY(22px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1)}
+.sr.on{opacity:1;transform:none}
+.d1{transition-delay:.07s}.d2{transition-delay:.14s}.d3{transition-delay:.21s}
+
+/* ── HEADER ── */
+.hdr{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.93);backdrop-filter:blur(20px) saturate(160%);border-bottom:1px solid var(--bd);transition:box-shadow .3s}
+.hdr.up{box-shadow:var(--sh1)}
+.hdr-in{max-width:1120px;margin:0 auto;padding:0 2rem;height:62px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.03em;color:var(--ink)}
+.logo-icon{width:30px;height:30px;border-radius:8px;background:var(--ink);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo-icon svg{width:16px;height:16px}
+.logo-wm span{color:var(--a)}
+.hdr-nav{display:flex;align-items:center;gap:4px}
+.nav-a{font-size:13px;font-weight:500;color:var(--ink3);padding:6px 12px;border-radius:8px;transition:color .2s,background .2s}
+.nav-a:hover{color:var(--ink);background:var(--bg3)}
+.nav-a.active{color:var(--ink);background:var(--bg3)}
+.nav-chip{font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;padding:5px 12px;border-radius:100px;background:var(--al);color:var(--adk);border:1px solid var(--am);margin-left:6px}
+
+/* ── PAGE ── */
+.page-wrap{max-width:740px;margin:0 auto;padding:0 1.5rem}
+
+/* ── HEAD ── */
+.page-head{padding:4.5rem 0 2.5rem;border-bottom:1px solid var(--bd)}
+.page-kicker{display:block;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--ad);margin-bottom:.8rem}
+.page-h1{font-family:var(--serif);font-size:clamp(30px,5vw,44px);font-weight:500;line-height:1.12;letter-spacing:-.018em;color:var(--ink);margin-bottom:1.1rem}
+.page-deck{font-family:var(--serif);font-size:18.5px;line-height:1.78;color:var(--ink3);border-left:3px solid var(--am);padding-left:1.25rem}
+
+/* ── PROSE ── */
+.about-body{padding:3rem 0}
+.about-body p{font-family:var(--serif);font-size:17.5px;line-height:1.88;color:var(--ink);margin-bottom:1.5rem}
+.about-body h2{font-family:var(--serif);font-size:22px;font-weight:500;color:var(--ink);margin:3rem 0 1rem;padding-top:2.5rem;border-top:1px solid var(--bd)}
+.about-body a{color:var(--td);text-decoration:underline;text-decoration-color:var(--tm);text-underline-offset:3px;transition:text-decoration-color .2s}
+.about-body a:hover{text-decoration-color:var(--t)}
+.about-body strong{font-weight:600}
+.about-body em{font-style:italic}
+
+/* ── SERIES OVERVIEW BOX ── */
+.series-box{
+  background:var(--al);border:1px solid var(--am);
+  border-radius:14px;padding:1.75rem 2rem;margin:2.5rem 0
+}
+.sb-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ad);margin-bottom:.75rem}
+.sb-title{font-family:var(--serif);font-size:20px;font-weight:500;color:var(--adk);margin-bottom:.6rem}
+.sb-body{font-size:13.5px;line-height:1.68;color:var(--ad)}
+.sb-link{
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:13px;font-weight:700;color:var(--adk);
+  border-bottom:2px solid var(--am);padding-bottom:2px;
+  margin-top:1rem;transition:gap .2s
+}
+.sb-link:hover{gap:11px}
+
+/* ── FOOTER ── */
+.footer{background:var(--ink);color:rgba(255,255,255,.65);padding:3rem 0;margin-top:5rem}
+.footer-in{max-width:1120px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.footer-logo{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:rgba(255,255,255,.9)}
+.footer-dot{width:7px;height:7px;border-radius:50%;background:var(--am)}
+.footer-text{font-size:12px;line-height:1.65}
+.footer-text a{color:rgba(255,255,255,.45);border-bottom:1px solid rgba(255,255,255,.15);transition:color .2s}
+.footer-text a:hover{color:rgba(255,255,255,.8)}
+
+@media(max-width:640px){
+  .hdr-in,.page-wrap{padding:0 1.25rem}
+  .profile-card{flex-direction:column;gap:14px}
+}
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header class="hdr" id="hdr">
+  <div class="hdr-in">
+    <a class="logo" href="/">
+      <div class="logo-icon"><svg viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="#E09820" stroke-width="1.5"/><circle cx="9" cy="9" r="3.5" fill="#E09820" fill-opacity=".3"/><circle cx="9" cy="9" r="1.5" fill="#E09820"/></svg></div>
+      <span class="logo-wm">How AI <span>Remembers</span></span>
+    </a>
+    <nav class="hdr-nav">
+      <a href="/" class="nav-a">Series</a>
+      <a href="/about/" class="nav-a active">About</a>
+      <span class="nav-chip">Ongoing · 2026</span>
+    </nav>
+  </div>
+</header>
+
+
+<!-- ── PAGE HEAD ── -->
+<div class="page-wrap">
+  <div class="page-head">
+    <span class="page-kicker au">About this series</span>
+    <h1 class="page-h1 au a1">The question that wouldn't let go</h1>
+    <p class="page-deck au a2">
+      I work in AI and I find it endlessly fascinating. One question keeps coming back: how far can we keep extending the context window before we have to admit that's not really a solution? This series is my attempt to properly understand the problem — and find out if there's something better.
+    </p>
+  </div>
+
+  <div class="about-body">
+
+    <p class="sr">I work in AI. That's the short version.</p>
+
+    <p class="sr d1">The longer version is that I spend a lot of time thinking about a specific question that I can't quite shake: how far can we keep extending the context window before we have to admit that's not really a solution? Does an LLM actually need to remember everything you've ever said to it? And if it doesn't — what should it remember, and how should it decide?</p>
+
+    <p class="sr d2">These aren't purely academic questions for me. They come up in the real work. And the more I looked at the existing answers, the less satisfied I was with them. This series is me trying to understand the problem properly — from the ground up — and see if there's something better.</p>
+
+    <div class="series-box sr">
+      <div class="sb-label">The series</div>
+      <div class="sb-title">How AI Remembers</div>
+      <div class="sb-body">13 posts covering the full landscape of AI memory — from technical foundations to a new architectural proposal. Written for anyone who thinks carefully, regardless of background.</div>
+      <a href="/" class="sb-link">See the full series →</a>
+    </div>
+
+    <p class="sr" style="margin-top:2.5rem">Rex Mathew · Kerala, India · <a href="mailto:rex_mathew@outlook.com">rex_mathew@outlook.com</a></p>
+
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <div class="footer-in">
+    <div class="footer-logo"><div class="footer-dot"></div>How AI Remembers</div>
+    <p class="footer-text">
+      An independent research series by <a href="/about/">Rex Mathew</a>, Kerala, India. 2026.<br>
+      Published at <a href="https://rex-mathew.github.io">rex-mathew.github.io</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const hdr = document.getElementById('hdr');
+  window.addEventListener('scroll',()=>hdr.classList.toggle('up',scrollY>20),{passive:true});
+  const els = document.querySelectorAll('.sr');
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}});
+  },{threshold:0.07,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(el=>io.observe(el));
+})();
+</script>
+</body>
+</html>
