@@ -1,0 +1,19 @@
+title: "How AI Remembers"
+tagline: "A complete guide to AI memory"
+description: "A complete guide to AI memory — how it works, why it breaks, and what comes next. From LLM fundamentals to the frontier of memory research."
+author:
+  name: "Rex Mathew"
+  location: "Kerala, India"
+url: "https://rex-mathew.github.io"
+baseurl: ""
+markdown: kramdown
+highlighter: rouge
+permalink: /posts/:slug/
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - node_modules
